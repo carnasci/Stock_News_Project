@@ -17,4 +17,7 @@ response = requests.get(url=STOCK_ENDPOINT, params=parameters)
 response.raise_for_status()
 print(response.status_code)
 data = response.json()
-print(data)
+daily_data = data["Time Series (Daily)"]
+#Gather list of daily closing prices
+closing_prices = [value["4. close"] for (key, value) in daily_data.items()]
+print(closing_prices)
