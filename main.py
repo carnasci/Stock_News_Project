@@ -1,5 +1,5 @@
 import requests
-from credentials import api_key
+from credentials import api_key, news_api_key
 
 STOCK_NAME = "TSLA"
 COMPANY_NAME = "Tesla Inc"
@@ -28,6 +28,14 @@ positive_difference = abs(yesyesterday_closing - yesterday_closing)
 print(positive_difference)
 percent_diff = (positive_difference/yesyesterday_closing)*100
 print(percent_diff)
-if percent_diff > 5:
-    print("Get News")
-
+if percent_diff > 3:
+    #print("Get News")
+    #Instead of printing get news get the first 3 news articles for the company
+    parameters = {
+        "q" : COMPANY_NAME,
+        "apikey" : news_api_key,
+    }
+    response = requests.get(url="https://newsapi.org/v2/everything", params=parameters)
+    data = response.json()
+    first_three_articles = data["articles"][0:3]
+    print(first_three_articles)
