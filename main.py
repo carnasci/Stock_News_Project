@@ -31,11 +31,13 @@ print(percent_diff)
 if percent_diff > 3:
     #print("Get News")
     #Instead of printing get news get the first 3 news articles for the company
-    parameters = {
+    news_parameters = {
         "q" : COMPANY_NAME,
+        "language" : "en",
+        "searchIn" : "title",
         "apikey" : news_api_key,
     }
-    response = requests.get(url="https://newsapi.org/v2/everything", params=parameters)
-    data = response.json()
-    first_three_articles = data["articles"][0:3]
+    response = requests.get(url="https://newsapi.org/v2/everything", params=news_parameters)
+    news_data = response.json()
+    first_three_articles = news_data["articles"][:3]
     print(first_three_articles)
