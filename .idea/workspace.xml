@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7fb9642c-bf86-4c5f-af51-0f23d7c9997f" name="Changes" comment="Day 36 - used a separate api to call for three latest news articles relating to the company if the closing prices percent difference is greater than 3(for testing purposes)">
+    <list default="true" id="7fb9642c-bf86-4c5f-af51-0f23d7c9997f" name="Changes" comment="Day 36 - modified code to show better article search results">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -108,7 +108,15 @@
       <option name="project" value="LOCAL" />
       <updated>1740790055061</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Day 36 - modified code to show better article search results">
+      <option name="closed" value="true" />
+      <created>1740790994563</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1740790994563</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -117,6 +125,7 @@
     <MESSAGE value="Day 36 - Was able to use list comprehension to parse data into daily closing prices" />
     <MESSAGE value="Day 36 - figured out the percent difference in closing stock prices and alerts in terminal to get news" />
     <MESSAGE value="Day 36 - used a separate api to call for three latest news articles relating to the company if the closing prices percent difference is greater than 3(for testing purposes)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Day 36 - used a separate api to call for three latest news articles relating to the company if the closing prices percent difference is greater than 3(for testing purposes)" />
+    <MESSAGE value="Day 36 - modified code to show better article search results" />
+    <option name="LAST_COMMIT_MESSAGE" value="Day 36 - modified code to show better article search results" />
   </component>
 </project>

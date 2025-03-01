@@ -34,10 +34,12 @@ if percent_diff > 3:
     news_parameters = {
         "q" : COMPANY_NAME,
         "language" : "en",
-        "searchIn" : "title",
+        "searchIn" : "title,description",
         "apikey" : news_api_key,
     }
     response = requests.get(url="https://newsapi.org/v2/everything", params=news_parameters)
     news_data = response.json()
     first_three_articles = news_data["articles"][:3]
     print(first_three_articles)
+    formatted_articles = [f"Headline: {article['title']}. \nBrief: {article['description']}" for article in first_three_articles]
+    print(formatted_articles)
