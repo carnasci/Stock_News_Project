@@ -1,5 +1,6 @@
 import requests
-from credentials import api_key, news_api_key
+from twilio.rest import Client
+from credentials import api_key, news_api_key, acc_sid, auth_token
 
 STOCK_NAME = "TSLA"
 COMPANY_NAME = "Tesla Inc"
@@ -24,9 +25,14 @@ closing_prices = [value["4. close"] for (key, value) in daily_data.items()]
 print(closing_prices)
 yesterday_closing = float(closing_prices[0])
 yesyesterday_closing = float(closing_prices[1])
-positive_difference = abs(yesyesterday_closing - yesterday_closing)
+positive_difference = (yesyesterday_closing - yesterday_closing)
+up_down = ""
+if positive_difference > 0:
+    up_down = "🔺"
+else:
+    up_down = "🔻"
 print(positive_difference)
-percent_diff = (positive_difference/yesyesterday_closing)*100
+percent_diff = (abs(positive_difference)/yesyesterday_closing)*100
 print(percent_diff)
 if percent_diff > 3:
     #print("Get News")
@@ -41,5 +47,14 @@ if percent_diff > 3:
     news_data = response.json()
     first_three_articles = news_data["articles"][:3]
     print(first_three_articles)
-    formatted_articles = [f"Headline: {article['title']}. \nBrief: {article['description']}" for article in first_three_articles]
+    formatted_articles = [f"{STOCK_NAME}: {up_down}{round(percent_diff, 2)}%\nHeadline: {article['title']}. \nBrief: {article['description']}" for article in first_three_articles]
     print(formatted_articles)
+
+    client = Client(acc_sid, auth_token)
+    for article in formatted_articles:
+        message = client.messages.create(
+            from_="whatsapp:+14155238886",
+            body=f"{article}",
+            to="whatsapp:+13147286668"
+        )
+        print(message.status)
